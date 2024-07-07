@@ -1,0 +1,26 @@
+.main {
+  margin-left: 250px;
+}
+
+::-webkit-scrollbar {
+  width: 0.525rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--text-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--first-color);
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    margin-left: 0;
+  }
+}
+
+body.dark {
+  background-color: rgb(30, 26, 26);
+}

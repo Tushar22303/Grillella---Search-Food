@@ -1,0 +1,103 @@
+/* importing Style.css */
+@import url('../../assessts/Style/style.css');
+
+/* CSS For Footer */
+.footer {
+    background-color: rgb(24, 24, 24);
+    padding: 1.5rem 2rem;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow wrapping for responsiveness */
+    align-items: center;
+    justify-content: space-evenly;
+    transition: background-color 0.3s ease;
+}
+
+.footer p {
+    font-size: 0.85rem;
+}
+
+.footer a {
+    display: block;
+    color: var(--container-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+    /* Smooth color and transform transition */
+}
+
+.footer a:hover {
+    color: var(--first-color);
+    transform: scale(1.1);
+    /* Scale animation on hover */
+}
+
+.grillella {
+    width: 50%;
+    margin: 1rem 0;
+    /* Margin for spacing on small screens */
+    text-align: center;
+    /* Center the text */
+    transition: transform 0.3s ease;
+    /* Smooth transform transition */
+}
+
+.grillella img {
+    height: 100px;
+    width: 100px;
+    transition: transform 0.3s ease;
+    /* Smooth transform transition */
+}
+
+.grillella img:hover {
+    transform: rotate(360deg);
+    /* Rotate animation on hover */
+}
+
+.footer__section {
+    width: 30%;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.footer__section h4 {
+    margin-bottom: 0.5rem;
+}
+
+.footer__section a {
+    margin-bottom: 0.3rem;
+}
+
+.footer__section .social a {
+    display: inline-block;
+    margin: 0 0.5rem;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        /* Stack elements vertically */
+        align-items: center;
+    }
+
+    .grillella,
+    .footer__section {
+        width: 70%;
+    }
+
+    .footer p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .grillella,
+    .footer__section {
+        width: 90%;
+    }
+
+    .footer p {
+        font-size: 0.75rem;
+    }
+}

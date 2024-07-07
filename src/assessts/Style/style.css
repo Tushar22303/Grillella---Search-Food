@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/*  Root CSS  */
+:root {
+    /* Colors */
+    --first-color: hsl(22, 100%, 50%);
+    --text-color: hsl(244, 16%, 43%);
+    --title-color: hsl(244, 24%, 26%);
+    --body-color: hsl(270, 4%, 90%);
+    --container-color: #ebebeb;
+
+    /* Text-font */
+    --body-font: "Nunito", sans-serif;
+    --h1-text-font: 2.25rem;
+    --h2-text-font: 1.5rem;
+    --h3-text-font: 1.25rem;
+    --normal-text-font: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.812rem;
+
+    /* font-weight */
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+    /* box-shadow */
+    --shadow: 0px 5px 20px 0px rgb(69 67 96 / 10%);
+
+    /* Border-Radius */
+    --border-radius: 20px;
+}
+
+/* Responsive CSS */
+
+@media screen and (max-width: 1024px) {
+    :root {
+        --h1-text-font: 1.75rem;
+        --h2-text-font: 1.25rem;
+        --h3-text-font: 1rem;
+        --normal-text-font: 0.938rem;
+        --small-font-size: 0.813rem;
+        --smaller-font-size: 0.75rem;
+    }
+}
+
+/*  Base CSS  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+textarea {
+    font-family: var(--body-font);
+    font-size: var(--normal-text-font);
+}
+
+body {
+    background: var(--body-color);
+    line-height: 1.7;
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: var(--font-semibold);
+    color: var(--title-color);
+    line-height: 1.2;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+/*  Reuseable CSS */
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+}
+
+.btn {
+    padding: 0.75rem 2rem;
+    line-height: 1;
+    border-radius: 0;
+    box-shadow: 0 0 1px rgb(0 0 0 / 0%);
+    border: 1px solid transparent;
+    color: #fff;
+    display: inline-block;
+    background: var(--first-color);
+    font-weight: var(--font-bold);
+}

@@ -1,0 +1,123 @@
+/* importing Style.css */
+@import url('../../assessts/Style/style.css');
+
+/* CSS for Sidebar */
+.aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    z-index: 10;
+    /* transition: .3s; */
+}
+
+.logo__image {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+}
+
+.logo__image h3 {
+    font-size: 1.2rem;
+    margin-top: 7px;
+}
+
+.welcomeIcon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+nav.nav {
+    flex-grow: 1;
+    margin-top: 2.5rem;
+}
+
+.nav__menu {
+    padding: 0;
+    margin: 0;
+}
+
+.nav__list {
+    padding: 0 0 0 1rem;
+}
+
+.nav__link {
+    display: flex;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.nav__link p {
+    font-size: 1.1rem;
+}
+
+.nav__link:hover {
+    color: var(--first-color);
+}
+
+.icon {
+    font-size: 1.1rem;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.nav__footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.copyright {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.nav__toggle {
+    position: fixed;
+    top: 1.25rem;
+    left: 1.875rem;
+    background-color: var(--body-color);
+    height: 40px;
+    width: 45px;
+    border: 1px solid var(--text-color);
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: .3s;
+}
+
+@media screen and (max-width: 1024px) {
+    .aside {
+        left: -250px;
+        animation: hideAside .3s forwards;
+    }
+
+    .nav__toggle {
+        display: flex;
+    }
+
+    .nav__toggle-open {
+        left: 280px;
+    }
+
+    .show-menu {
+        left: 0;
+        animation: showAside .3s forwards;
+    }
+}

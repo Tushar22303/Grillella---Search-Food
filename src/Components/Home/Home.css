@@ -1,0 +1,216 @@
+/* importing Style.css */
+@import url('../../assessts/Style/style.css');
+
+/* CSS for Home Page */
+.home {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro {
+    max-width: 540px;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.home__img {
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite alternate;
+    transition: all 0.2s;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.home__name {
+    font-size: var(--h1-text-font);
+    font-weight: var(--font-bold);
+    margin-bottom: 0.5rem;
+    animation: slideInFromLeft 1.2s ease-in-out;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.home__name .foodDelivery {
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-15px);
+    }
+
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.home__socials {
+    display: flex;
+    column-gap: 1.75rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+    animation: fadeIn 1.5s ease-in-out 0.5s;
+}
+
+.home__socials a {
+    font-size: 1.3rem;
+    color: var(--title-color);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.home__socials a:hover {
+    color: var(--first-color);
+    transform: scale(1.1);
+}
+
+.Shapes {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    overflow: hidden;
+    /* Ensure shapes don't overflow */
+}
+
+.shape {
+    position: absolute;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.s1 {
+    left: 2%;
+    top: 10%;
+}
+
+.s2 {
+    left: 18%;
+    top: 30%;
+}
+
+.s3 {
+    left: 15%;
+    bottom: 30%;
+}
+
+.s4 {
+    left: 2%;
+    bottom: 10%;
+}
+
+.s5 {
+    left: 35%;
+    top: 10%;
+}
+
+.s6 {
+    left: 36%;
+    bottom: 10%;
+}
+
+.s7 {
+    top: 20%;
+    right: 25%;
+}
+
+.s8 {
+    right: 24%;
+    bottom: 20%;
+}
+
+.s9 {
+    right: 8%;
+    top: 10%;
+}
+
+.s10 {
+    top: 45%;
+    right: 11%;
+}
+
+.s11 {
+    bottom: 10%;
+    right: 5%;
+}
+
+.intro .readMore {
+    background: var(--first-color);
+    transition: all 0.3s ease;
+}
+
+.intro .readMore:hover {
+    box-shadow: 0 2px 10px var(--text-color);
+    transform: translateY(-5px);
+}
+
+@media screen and (max-width: 1024px) {
+    .home__img {
+        height: 220px;
+        width: 220px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .home__img {
+        height: 180px;
+        width: 180px;
+    }
+
+    .home__name {
+        font-size: 1.5rem;
+    }
+
+    .home__name .foodDelivery {
+        height: 35px;
+        width: 35px;
+    }
+}

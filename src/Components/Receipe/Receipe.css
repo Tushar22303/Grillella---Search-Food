@@ -1,0 +1,123 @@
+/* Keyframes for opening animation */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Keyframes for closing animation */
+@keyframes modalFadeOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+}
+
+/* Modal styles */
+.recipe-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: modalFadeIn 0.3s forwards;
+}
+
+.recipe-modal img {
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.recipe-modal p {
+    font-size: 0.95rem;
+    text-align: justify;
+    margin: 0.5rem 0;
+}
+
+/* Overlay styles */
+.recipe-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+/* Close button styles */
+.recipe-modal-close {
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+.modal__photo__title {
+    display: flex;
+    align-items: center;
+    column-gap: 1.875rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .recipe-modal {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .recipe-modal img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .recipe-modal p {
+        font-size: 0.9rem;
+    }
+
+    .modal__photo__title {
+        column-gap: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe-modal {
+        max-width: 80%;
+        padding: 10px;
+    }
+
+    .recipe-modal img {
+        height: 60px;
+        width: 60px;
+    }
+
+    .recipe-modal p {
+        font-size: 0.85rem;
+    }
+
+    .modal__photo__title {
+        flex-direction: column;
+        align-items: flex-start;
+        column-gap: 0;
+    }
+}
