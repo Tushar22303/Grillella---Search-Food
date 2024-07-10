@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Sidebar.css'
-import logo from '../../assessts/Images/Food App Logo.png'
-import welcomeIcon from '../../assessts/Images/welcome.png'
+import './Sidebar.css';
+import logo from '../../assessts/Images/Food App Logo.png';
+import welcomeIcon from '../../assessts/Images/welcome.png';
 import { TiHome } from "react-icons/ti";
 import { FaReceipt, FaUser, FaQuestionCircle, FaShoppingCart } from "react-icons/fa";
 import { IoSettings, IoFastFoodSharp } from "react-icons/io5";
@@ -36,8 +36,12 @@ const Sidebar = () => {
         }
     }
 
-    const [toggle, showMenu] = useState(false)
-    const [animating, setAnimating] = useState(false)
+    const [toggle, showMenu] = useState(false);
+    const [animating, setAnimating] = useState(false);
+
+    const handleLinkClick = () => {
+        showMenu(false);
+    };
 
     return (
         <>
@@ -46,15 +50,16 @@ const Sidebar = () => {
                 animate={{ opacity: 1, translateX: 0, }}
                 transition={{ type: "tween", duration: 0.5 }}
             >
-                <a href="#" className='logo__image'>
-                    <motion.img src={logo} alt="logo" className='logo'
-                        initial={{ x: 0 }}
-                        animate={{
-                            rotate: animating ? 360 : 0
-                        }}
-                        transition={{ duration: 0.5 }}
-                        onClick={() => setAnimating(!animating)}
-                    />
+                <a className='logo__image'>
+                    <Link to='/' href="#" >
+                        <motion.img src={logo} alt="logo" className='logo'
+                            initial={{ x: 0 }}
+                            animate={{
+                                rotate: animating ? 360 : 0
+                            }}
+                            transition={{ duration: 0.5 }}
+                            onClick={() => setAnimating(!animating)}
+                        /></Link>
                     <h3>WelCome to Grillella
                         <img src={welcomeIcon} alt="WelCome Icon" className='welcomeIcon' />
                     </h3>
@@ -70,7 +75,7 @@ const Sidebar = () => {
                             <motion.li className="nav__item"
                                 variants={liVariant}
                             >
-                                <Link to="/" href="#" className='nav__link'>
+                                <Link to="/" className='nav__link' onClick={handleLinkClick}>
                                     <TiHome className='icon' />
                                     <p>Home</p>
                                 </Link>
@@ -78,7 +83,7 @@ const Sidebar = () => {
                             <motion.li className="nav__item"
                                 variants={liVariant}
                             >
-                                <Link to='/about' href="#" className='nav__link'>
+                                <Link to='/about' className='nav__link' onClick={handleLinkClick}>
                                     <IoFastFoodSharp className='icon' />
                                     <p>Order Food</p>
                                 </Link>
@@ -86,7 +91,7 @@ const Sidebar = () => {
                             <motion.li className="nav__item"
                                 variants={liVariant}
                             >
-                                <Link to='/cart' href="#" className='nav__link'>
+                                <Link to='/cart' className='nav__link' onClick={handleLinkClick}>
                                     <FaShoppingCart className='icon' />
                                     <p>Your Order</p>
                                 </Link>
@@ -94,7 +99,7 @@ const Sidebar = () => {
                             <motion.li className="nav__item"
                                 variants={liVariant}
                             >
-                                <Link to='/receipe' href="#" className='nav__link'>
+                                <Link to='/receipe' className='nav__link' onClick={handleLinkClick}>
                                     <FaReceipt className='icon' />
                                     <p>Receipe</p>
                                 </Link>
@@ -102,7 +107,7 @@ const Sidebar = () => {
                             <motion.li className="nav__item"
                                 variants={liVariant}
                             >
-                                <Link to='/profile' href="#" className='nav__link'>
+                                <Link to='/profile' className='nav__link' onClick={handleLinkClick}>
                                     <FaUser className='icon' />
                                     <p>Profile</p>
                                 </Link>
@@ -110,7 +115,7 @@ const Sidebar = () => {
                             <motion.li className="nav__item"
                                 variants={liVariant}
                             >
-                                <Link to='/setting' href="#" className='nav__link'>
+                                <Link to='/setting' className='nav__link' onClick={handleLinkClick}>
                                     <IoSettings className='icon' />
                                     <p>Setting</p>
                                 </Link>
@@ -118,7 +123,7 @@ const Sidebar = () => {
                             <motion.li className="nav__item"
                                 variants={liVariant}
                             >
-                                <Link to='/faq' href="#" className='nav__link'>
+                                <Link to='/faq' className='nav__link' onClick={handleLinkClick}>
                                     <FaQuestionCircle className='icon' />
                                     <p>FAQ</p>
                                 </Link>
@@ -141,4 +146,4 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar
+export default Sidebar;

@@ -4,6 +4,7 @@ import './About.css';
 import orderTheFood from '../../assessts/Images/OrderTheFood.gif'
 import Footer from '../Footer/Footer';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const About = ({ addToCart, cartItemsCount }) => {
     const [items, setItems] = useState(Data);
@@ -31,8 +32,10 @@ const About = ({ addToCart, cartItemsCount }) => {
                         <div className="col-12">
                             <h2>What's in your Mind?</h2>
                             <div className="cart-icon">
-                                <i className="fas fa-shopping-cart"></i>
-                                {cartItemsCount > 0 && <span className="cart-count">{cartItemsCount}</span>}
+                                <Link to='/cart'>
+                                    <i className="fas fa-shopping-cart" style={{ color: "gray" }}></i>
+                                    {cartItemsCount > 0 && <span className="cart-count">{cartItemsCount}</span>}
+                                </Link>
                             </div>
                         </div>
                     </div>

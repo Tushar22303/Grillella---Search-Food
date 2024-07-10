@@ -44,16 +44,24 @@ function App() {
     localStorage.setItem('isSignedIn', 'true'); // Save sign-in state to local storage
   };
 
-  const handleSignOut = () => {
-    setIsSignedIn(false);
-    localStorage.setItem('isSignedIn', 'false'); // Clear sign-in state from local storage
-  };
+  // const handleSignOut = () => {
+  //   setIsSignedIn(false);
+  //   localStorage.setItem('isSignedIn', 'false'); // Clear sign-in state from local storage
+  // };
 
   const deleteFromCart = (index) => {
     const newCart = [...cart];
     newCart.splice(index, 1);
     setCart(newCart);
   };
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
+
 
 
   return (
@@ -70,7 +78,7 @@ function App() {
                 <Route path="/profile" element={<Profile user={user} />} />
                 <Route path="/setting" element={<Setting />} />
                 <Route path="/faq" element={<Faq />} />
-                <Route path="/cart" element={<Cart cart={cart} deleteFromCart={deleteFromCart} />} /> {/* Route to Cart component */}
+                <Route path="/cart" element={<Cart cart={cart} setCart={setCart} deleteFromCart={deleteFromCart} />} />
               </Routes>
             </main>
           </>

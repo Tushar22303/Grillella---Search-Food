@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Cart.css';
+import { FaTrashAlt } from "react-icons/fa";
+import orderPlaced from '../../assessts/Images/place order.png'
 
-const Cart = ({ cart, deleteFromCart }) => {
+const Cart = ({ cart, setCart, deleteFromCart }) => {
+    const [showModal, setShowModal] = useState(false)
+
     const calculateTotal = () => {
         return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
     };
+
+    useEffect(() => {
+        const storedCart = localStorage.getItem('cart');
+        if (storedCart) {
+            setCart(JSON.parse(storedCart))
+        }
+    }, [setCart])
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
+
+    const handlePlaceOrder = () => {
+        setShowModal(true);
+        setTimeout(() => {
+            setShowModal(false);
+            setCart([]);
+            localStorage.removeItem('cart');
+            window.location.href = '/';
+        }, 5000);
+    };
+
 
     return (
         <>
@@ -33,7 +59,7 @@ const Cart = ({ cart, deleteFromCart }) => {
                                         <td>${item.price}</td>
                                         <td>
                                             <button onClick={() => deleteFromCart(index)} className="btn-delete">
-                                                Delete
+                                                <FaTrashAlt />
                                             </button>
                                         </td>
                                     </tr>
@@ -43,9 +69,21 @@ const Cart = ({ cart, deleteFromCart }) => {
                         <div className="total">
                             <p><strong>Total</strong> <strong> ${calculateTotal()}</strong></p>
                         </div>
+                        <button onClick={handlePlaceOrder} className="btn-place-order">Place Order</button>
                     </div>
                 )}
             </div>
+            {showModal && (
+                <div className="modal">
+                    <div className="modal__content">
+                        <div className="order_placed">
+                            <h2 className='text-success'>Order Placed Successfully!
+                                <img src={orderPlaced} className='img-fluid orderTheFood placeOrder' />
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 };

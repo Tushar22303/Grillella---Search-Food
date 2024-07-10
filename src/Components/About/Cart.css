@@ -60,9 +60,9 @@ tr:hover {
 }
 
 .btn-delete {
-    padding: 0.3rem;
+    padding: 0.85rem;
     border-radius: 10px;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--body-color);
     background-color: var(--first-color);
 
@@ -78,4 +78,43 @@ tr:hover {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Modal styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__content {
+    background: white;
+    padding: 3rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.placeOrder{
+    width: 150px;
+}
+
+.btn-place-order {
+    float: right;
+    margin-right: 2rem;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-place-order:hover {
+    background-color: #218838;
 }

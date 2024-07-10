@@ -19,7 +19,7 @@ const Home_2 = ({ id, image, itemName, price }) => {
                 <div className="row">
                     <div className="col-md-6 col-sm-12">
                         <div className="culinary__image">
-                            <motion.img src={culinary_photo} alt="Culinary Photo" drag dragConstraints={{ right: 30, top: -100, left: 20, bottom: 100 }} whileHover={{ borderRadius: "2rem" }} />
+                            <img src={culinary_photo} alt="Culinary Photo" />
                         </div>
                     </div>
                     <div className="col-md-6 col-sm-12">
@@ -117,7 +117,7 @@ const Home_2 = ({ id, image, itemName, price }) => {
                                     <h3>{item.itemName}</h3>
                                     <p>Price: {item.price}</p>
                                 </div>
-                                <button className='btn orderNow'>Order Now</button>
+                                <button className='btn viewMore'>View More</button>
                             </div>
                         ))}
                     </div>
