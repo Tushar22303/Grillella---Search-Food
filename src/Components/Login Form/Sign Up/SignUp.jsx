@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
 
 const SignUp = ({ onSignUp }) => {
@@ -12,6 +13,8 @@ const SignUp = ({ onSignUp }) => {
         password: '',
     });
 
+    const navigate = useNavigate(); // Initialize the useNavigate hook
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -23,7 +26,8 @@ const SignUp = ({ onSignUp }) => {
     const handleSignUp = (e) => {
         e.preventDefault();
         localStorage.setItem('user', JSON.stringify(formData)); // Save user data to local storage
-        onSignUp(formData);  // Notify parent component about successful sign up
+        onSignUp(formData);  // Notify parent component about successful sign-up
+        navigate('/'); // Navigate to the home page
     };
 
     return (

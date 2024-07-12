@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Sidebar from './Components/Sidebar/Sidebar';
 import Home from './Components/Home/Home';
@@ -10,7 +10,8 @@ import SignIn from './Components/Login Form/Sign In/SignIn';
 import Faq from './Components/FAQ/Faq';
 import SignUp from './Components/Login Form/Sign Up/SignUp';
 import Profile from './Components/Profile Page/Profile';
-import Cart from './Components/About/Cart'; // Import the Cart component
+import Cart from './Components/About/Cart';
+import ProtectedRoute from '../src/Components/ProtcectedRoute';
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -39,15 +40,25 @@ function App() {
     localStorage.setItem('isSignedIn', 'true'); // Save sign-in state to local storage
   };
 
-  const handleSignIn = (state) => {
-    setIsSignedIn(state);
-    localStorage.setItem('isSignedIn', 'true'); // Save sign-in state to local storage
+  const handleSignIn = (email, password) => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser && storedUser.email === email && storedUser.password === password) {
+      setIsSignedIn(true);
+      setUser(storedUser);
+      localStorage.setItem('isSignedIn', 'true'); // Save sign-in state to local storage
+    } else {
+      alert('Invalid email or password');
+    }
   };
 
-  // const handleSignOut = () => {
-  //   setIsSignedIn(false);
-  //   localStorage.setItem('isSignedIn', 'false'); // Clear sign-in state from local storage
-  // };
+  const handleLogout = () => {
+    setIsSignedIn(false);
+    setUser(null);
+    setCart([]);
+    localStorage.removeItem('user'); // Remove user data from local storage
+    localStorage.removeItem('isSignedIn'); // Remove sign-in state from local storage
+    localStorage.removeItem('cart'); // Remove cart from local storage
+  };
 
   const deleteFromCart = (index) => {
     const newCart = [...cart];
@@ -62,34 +73,44 @@ function App() {
     }
   }, []);
 
-
-
   return (
     <Router>
       <div className='app'>
-        {isSignedIn ? (
-          <>
-            <Sidebar />
-            <main className="main">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About addToCart={addToCart} cartItemsCount={cartItemsCount} />} />
-                <Route path="/receipe" element={<Receipe />} />
-                <Route path="/profile" element={<Profile user={user} />} />
-                <Route path="/setting" element={<Setting />} />
-                <Route path="/faq" element={<Faq />} />
-                <Route path="/cart" element={<Cart cart={cart} setCart={setCart} deleteFromCart={deleteFromCart} />} />
-              </Routes>
-            </main>
-          </>
-        ) : (
-          <>
-            <Routes>
-              <Route path="/" element={<SignIn onSignIn={handleSignIn} />} />
-              <Route path="/signup" element={<SignUp onSignUp={handleSignUp} />} />
-            </Routes>
-          </>
-        )}
+        <Sidebar />
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/signin" element={<SignIn onSignIn={handleSignIn} />} />
+            <Route path="/signup" element={<SignUp onSignUp={handleSignUp} />} />
+            <Route path="/about" element={
+              <ProtectedRoute isSignedIn={isSignedIn}>
+                <About addToCart={addToCart} cartItemsCount={cartItemsCount} />
+              </ProtectedRoute>
+            } />
+            <Route path="/receipe" element={
+              <ProtectedRoute isSignedIn={isSignedIn}>
+                <Receipe />
+              </ProtectedRoute>
+            } />
+            <Route path="/profile" element={
+              <ProtectedRoute isSignedIn={isSignedIn}>
+                <Profile user={user} onLogout={handleLogout} />
+              </ProtectedRoute>
+            } />
+            <Route path="/setting" element={
+              <ProtectedRoute isSignedIn={isSignedIn}>
+                <Setting onLogout={handleLogout} />
+              </ProtectedRoute>
+            } />
+            <Route path="/cart" element={
+              <ProtectedRoute isSignedIn={isSignedIn}>
+                <Cart cart={cart} setCart={setCart} deleteFromCart={deleteFromCart} />
+              </ProtectedRoute>
+            } />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </main>
       </div>
     </Router>
   );

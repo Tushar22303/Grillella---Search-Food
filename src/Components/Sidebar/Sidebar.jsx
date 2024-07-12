@@ -50,20 +50,22 @@ const Sidebar = () => {
                 animate={{ opacity: 1, translateX: 0, }}
                 transition={{ type: "tween", duration: 0.5 }}
             >
-                <a className='logo__image'>
-                    <Link to='/' href="#" >
-                        <motion.img src={logo} alt="logo" className='logo'
-                            initial={{ x: 0 }}
-                            animate={{
-                                rotate: animating ? 360 : 0
-                            }}
-                            transition={{ duration: 0.5 }}
-                            onClick={() => setAnimating(!animating)}
-                        /></Link>
+
+                <Link to='/' href="#" className='logo__image' >
+                    <motion.img src={logo} alt="logo" className='logo'
+                        initial={{ x: 0 }}
+                        animate={{
+                            rotate: animating ? 360 : 0
+                        }}
+                        transition={{ duration: 0.5 }}
+                        onClick={() => setAnimating(!animating)}
+                    />
                     <h3>WelCome to Grillella
                         <img src={welcomeIcon} alt="WelCome Icon" className='welcomeIcon' />
                     </h3>
-                </a>
+                </Link>
+
+
 
                 <nav className='nav'>
                     <div className="nav__menu">

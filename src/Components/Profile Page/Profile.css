@@ -24,6 +24,23 @@
     /* Add padding to avoid content touching the edges on small screens */
 }
 
+.logout-button {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    padding: 10px 20px;
+    background-color: var(--first-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+}
+
+
 .profile-container .logo__container {
     display: flex;
     align-items: center;

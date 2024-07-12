@@ -3,10 +3,13 @@ import './Profile.css';
 import logo from '../../assessts/Images/Food App Logo.png';
 import foodDelivery from '../../assessts/Images/Food Delivery.png';
 
-const Profile = ({ user }) => {
+const Profile = ({ user, onLogout }) => {
     return (
         <div className="profile-container">
-            <h1>Profile</h1>
+            <div className="profile-header">
+                <h1>Profile</h1>
+                <button className="logout-button" onClick={onLogout}>Logout</button>
+            </div>
             <div className="logo__container">
                 <img src={logo} alt="Logo" className="home__img" />
                 <h3 className="home__name">Welcome to Grillella

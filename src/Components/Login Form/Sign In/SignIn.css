@@ -1,106 +1,67 @@
-/* Container for the sign-in form */
 .signin-container {
-    max-width: 400px;
-    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.signin-container h1 {
+    font-size: 2.5rem;
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.signin-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
+    width: 100%;
+    max-width: 400px;
 }
 
-/* Styling for the sign-in form */
-.signin-form {
-    display: flex;
-    flex-direction: column;
+.signin-container input {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
-/* Styling for form groups (label and input) */
-.form-group {
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
+.signin-container input:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.form-group label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-/* Styling for input fields */
-.form-group input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Add focus effect to input fields */
-.form-group input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Styling for the sign-in button */
-.signin-button {
-    padding: 10px 15px;
+.signin-container button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
     background-color: var(--first-color);
     color: white;
     border: none;
-    border-radius: 3px;
+    border-radius: 4px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease;
 }
 
-/* Add hover effect to the sign-in button */
-.signin-button:hover {
+.signin-container button:hover {
     background-color: #0056b3;
-    transform: translateY(-2px);
 }
 
-/* Styling for the sign-up link */
-.signin-form p {
-    margin-top: 10px;
-}
-
-.signin-form p a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-/* Add hover effect to the sign-up link */
-.signin-form p a:hover {
-    color: #0056b3;
-}
-
-/* Keyframes for fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-    .signin-container {
-        max-width: 300px;
-        margin: 100px auto;
-    }
-
-    .signin-form h2 {
-        text-align: center;
-        padding-bottom: 10px;
-        border-bottom: 1px solid var(--text-color);
-    }
-
-    .form-group input {
-        padding: 6px;
-    }
+.signin-container button:focus {
+    outline: none;
+    background-color: #004085;
 }
